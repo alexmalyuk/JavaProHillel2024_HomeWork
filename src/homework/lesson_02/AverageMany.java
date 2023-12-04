@@ -2,16 +2,14 @@ package homework.lesson_02;
 
 public class AverageMany {
     public static void main(String[] args) {
-        float[] nn = {10.5F, 20.4F, 10.78F};
+        double[] nn = {10.5, 20.4, 10.78, 121, 456, 789};
         System.out.println(calcAverage(nn));
     }
 
-    private static float calcAverage(float[] numbers) {
-        float sum = 0F;
-
-        for (float number : numbers)
+    private static double calcAverage(double[] numbers) {
+        double sum = 0;
+        for (double number : numbers)
             sum += number;
-
         return sum / (numbers.length);
     }
 }
