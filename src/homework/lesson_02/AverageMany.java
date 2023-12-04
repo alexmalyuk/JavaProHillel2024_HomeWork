@@ -8,8 +8,11 @@ public class AverageMany {
 
     private static double calcAverage(double[] numbers) {
         double sum = 0;
-        for (double number : numbers)
+
+        for (double number : numbers) {
             sum += number;
-        return sum / (numbers.length);
+        }
+
+        return sum / numbers.length;
     }
 }
