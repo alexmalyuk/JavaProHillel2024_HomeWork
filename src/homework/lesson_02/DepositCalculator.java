@@ -20,7 +20,7 @@ public class DepositCalculator {
     }
 
     private static double getAnnualAmount(double Amount, float annualRate) {
-        final int COMPOUNDING_FREQUENCY = 12;
+        final int COMPOUNDING_FREQUENCY = 365;
         return Amount * Math.pow(1 + annualRate / 100 / COMPOUNDING_FREQUENCY, COMPOUNDING_FREQUENCY);
     }
 }
