@@ -1,4 +1,4 @@
-package homework.lesson_02;
+package homework.lesson02;
 
 public class AverageTwo {
     public static void main(String[] args) {

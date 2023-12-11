@@ -1,4 +1,4 @@
-package homework.lesson_02;
+package homework.lesson02;
 
 public class DepositCalculator {
     public static void main(String[] args) {
