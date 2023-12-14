@@ -1,9 +1,14 @@
 package homework.homework06;
 
 public class Dog extends Animal {
+    private static int totalDogs = 0;
+    public static  int getTotalDogs() {
+        return totalDogs;
+    }
 
     public Dog(String name) {
         super(name);
+        totalDogs++;
     }
 
     @Override

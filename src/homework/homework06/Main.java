@@ -6,6 +6,7 @@ public class Main {
         Animal cat2 = new Cat("Васька");
         Animal dog1 = new Dog("Шарік");
         Animal dog2 = new Dog("Рекс");
+        Animal dog3 = new Dog("Матрос");
 
         cat1.run(5);
         cat2.run(500);
@@ -15,6 +16,8 @@ public class Main {
         dog1.swim(15);
         dog2.swim(5);
 
-        System.out.println(Animal.getCount());
+        System.out.println("Всього тварин " + Animal.getTotalAnimals());
+        System.out.println("Котів " + Cat.getTotalCats());
+        System.out.println("Собак " + Dog.getTotalDogs());
     }
 }
