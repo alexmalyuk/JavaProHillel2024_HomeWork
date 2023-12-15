@@ -17,11 +17,11 @@ public class Main {
             for (Obstacle obstacle : obstacles) {
                 Result result = obstacle.overcome(participant);
                 if (result.isTaken()) {
-                    System.out.println("Учасник " + participant.getName()
-                            + " пройшов перешкоду " + obstacle.getName());
+                    System.out.println("Учасник " + participant
+                            + " пройшов перешкоду " + obstacle);
                 } else {
-                    System.out.println("Учасник " + participant.getName()
-                            + " не пройшов перешкоду " + obstacle.getName()
+                    System.out.println("Учасник " + participant
+                            + " не пройшов перешкоду " + obstacle
                             + " пройдено " + result.takenDistance() + "м");
                     break;
                 }

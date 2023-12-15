@@ -9,9 +9,10 @@ public abstract class Obstacle {
         this.complexity = complexity;
     }
 
-    public String getName() {
+    public abstract Result overcome(Participant participant);
+
+    @Override
+    public String toString() {
         return name;
     }
-
-    public abstract Result overcome(Participant participant);
 }

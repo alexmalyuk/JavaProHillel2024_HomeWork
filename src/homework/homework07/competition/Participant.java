@@ -11,10 +11,6 @@ public class Participant {
         this.maxJumpHeight = maxJumpHeight;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Result run(int distance) {
         System.out.println(" * " + name + " біжить на " + distance + " м");
         return new Result(distance <= maxRunDistance, Math.min(distance, maxRunDistance));
@@ -23,5 +19,10 @@ public class Participant {
     public Result jump(int height) {
         System.out.println(" * " + name + " стрибає на " + height + " м");
         return new Result((height <= maxJumpHeight), Math.min(height, maxJumpHeight));
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
