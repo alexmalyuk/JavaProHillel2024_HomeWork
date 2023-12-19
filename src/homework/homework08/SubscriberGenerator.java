@@ -4,10 +4,6 @@ import java.util.Random;
 
 public class SubscriberGenerator {
 
-    private static int getRandomInt(int min, int max) {
-        return new Random().nextInt(min, max);
-    }
-
     private SubscriberGenerator() {
     }
 
