@@ -40,13 +40,14 @@ public class DynamicArray {
     public void delete(int index) {
         CheckIndex(index);
 
-        innerArray[index] = null;
+        System.arraycopy(innerArray, index + 1, innerArray, index, size - index + 1);
+        size--;
     }
 
     public void delete(String value) {
         for (int i = 0; i < size; i++) {
             if (Objects.equals(innerArray[i], value)) {
-                innerArray[i] = null;
+                delete(i--);
             }
         }
     }
