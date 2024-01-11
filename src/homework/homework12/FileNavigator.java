@@ -10,8 +10,8 @@ public class FileNavigator {
     }
 
     public void add(FileData file) {
-        if (directories.containsKey(file.getPath()))
-            directories.get(file.getPath()).add(file);
+        if (directories.containsKey(file.path()))
+            directories.get(file.path()).add(file);
         else
             System.out.println("Cannot add " + file + " because specified path does not exist in FileNavigator");
     }
@@ -26,20 +26,21 @@ public class FileNavigator {
     public List<FileData> filterBySize(int maxSize) {
         List<FileData> result = new ArrayList<>();
 
-        for (Map.Entry<String, DirectoryData> directoryDataEntry : directories.entrySet())
+        for (var directoryDataEntry : directories.entrySet())
             for (FileData fileData : directoryDataEntry.getValue().getFiles())
-                if (fileData.getSize() <= maxSize)
+                if (fileData.size() <= maxSize)
                     result.add(fileData);
 
         return result;
     }
+
     public List<FileData> sortBySize() {
         List<FileData> allFiles = filterBySize(Integer.MAX_VALUE);
-        allFiles.sort(Comparator.comparing(FileData::getSize));
+        allFiles.sort(Comparator.comparing(FileData::size));
         return allFiles;
     }
 
-    public void remove(String path){
+    public void remove(String path) {
         directories.remove(path);
     }
 
@@ -47,7 +48,7 @@ public class FileNavigator {
     public String toString() {
         StringBuilder sb = new StringBuilder("FileNavigator{\n");
 
-        for (Map.Entry<String, DirectoryData> directoryDataEntry : directories.entrySet()) {
+        for (var directoryDataEntry : directories.entrySet()) {
             sb.append(directoryDataEntry.getKey()).append(" - ");
             sb.append(directoryDataEntry.getValue()).append('\n');
         }
