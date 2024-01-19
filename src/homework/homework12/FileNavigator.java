@@ -1,9 +1,17 @@
 package homework.homework12;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class FileNavigator {
     private final Map<String, DirectoryData> directories = new HashMap<>();
+
+    private List<FileData> getAllFiles() {
+        List<FileData> allFiles = new ArrayList<>();
+        for (DirectoryData dir : directories.values())
+            allFiles.addAll(dir.getFiles());
+        return allFiles;
+    }
 
     public void addPath(String path) {
         directories.put(path, new DirectoryData());
@@ -17,25 +25,17 @@ public class FileNavigator {
     }
 
     public List<FileData> find(String path) {
-        if (directories.containsKey(path))
-            return directories.get(path).getFiles();
-        else
-            return Collections.emptyList();
+        return directories.getOrDefault(path, new DirectoryData()).getFiles();
     }
 
     public List<FileData> filterBySize(int maxSize) {
-        List<FileData> result = new ArrayList<>();
-
-        for (var directoryDataEntry : directories.entrySet())
-            for (FileData fileData : directoryDataEntry.getValue().getFiles())
-                if (fileData.size() <= maxSize)
-                    result.add(fileData);
-
-        return result;
+        return getAllFiles().stream()
+                .filter(fileData -> fileData.size() <= maxSize)
+                .collect(Collectors.toList());
     }
 
     public List<FileData> sortBySize() {
-        List<FileData> allFiles = filterBySize(Integer.MAX_VALUE);
+        List<FileData> allFiles = getAllFiles();
         allFiles.sort(Comparator.comparing(FileData::size));
         return allFiles;
     }
