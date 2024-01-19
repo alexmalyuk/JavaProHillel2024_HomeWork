@@ -1,6 +1,7 @@
 package homework.homework11.phonebook;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PhoneBook {
@@ -15,21 +16,21 @@ public class PhoneBook {
     }
 
     public Record find(String name) {
-        if (name != null)
-            for (Record record : records)
-                if (record != null && name.equalsIgnoreCase(record.getName()))
-                    return record;
-        return null;
+        if (name == null)
+            return null;
+        else
+            return records.stream()
+                    .filter(record -> record != null && name.equalsIgnoreCase(record.getName()))
+                    .findFirst()
+                    .orElse(null);
     }
 
     public List<Record> findAll(String name) {
-        List<Record> result = new ArrayList<>();
-
-        if (name != null)
-            for (Record record : records)
-                if (record != null && name.equalsIgnoreCase(record.getName()))
-                    result.add(record);
-
-        return result;
+        if (name == null)
+            return Collections.emptyList();
+        else
+            return records.stream()
+                    .filter(record -> record != null && name.equalsIgnoreCase(record.getName()))
+                    .toList();
     }
 }
