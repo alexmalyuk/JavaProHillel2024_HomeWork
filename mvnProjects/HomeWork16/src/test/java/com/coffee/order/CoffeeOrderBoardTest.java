@@ -1,10 +1,10 @@
 package com.coffee.order;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class CoffeeOrderBoardTest {
 
@@ -37,8 +37,8 @@ class CoffeeOrderBoardTest {
     void deliverIfNotEmptyBoard() {
         CoffeeOrderBoard board = new CoffeeOrderBoard();
         Order order1 = board.add("User name1");
-        Order order2 = board.add("User name2");
-        Order order3 = board.add("User name3");
+        board.add("User name2");
+        board.add("User name3");
         assertEquals(order1, board.deliver());
     }
 
