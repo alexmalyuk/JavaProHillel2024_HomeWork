@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
+    record Pair (String s, String sUpper){
+    }
 
     public Double AverageOfInt(List<Integer> source) {
         return source.stream()

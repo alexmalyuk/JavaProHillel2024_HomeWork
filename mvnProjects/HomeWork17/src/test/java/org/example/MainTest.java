@@ -25,10 +25,10 @@ class MainTest {
                 "one",
                 "two",
                 "mouse");
-        List<Pair> expectedList = List.of(
-                new Pair("one", "ONE"),
-                new Pair("two", "TWO"),
-                new Pair("mouse", "MOUSE"));
+        List<Main.Pair> expectedList = List.of(
+                new Main.Pair("one", "ONE"),
+                new Main.Pair("two", "TWO"),
+                new Main.Pair("mouse", "MOUSE"));
         assertEquals(expectedList, new Main().createUpperList(source));
     }
 
