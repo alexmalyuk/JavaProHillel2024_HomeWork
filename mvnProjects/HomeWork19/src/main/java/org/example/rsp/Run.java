@@ -1,8 +1,8 @@
 package org.example.rsp;
 
 import org.example.rsp.dto.Choice;
-import org.example.rsp.dto.GameResult;
 import org.example.rsp.dto.Player;
+import org.example.rsp.exceptions.QuitGameException;
 import org.example.rsp.services.ChoiceService;
 import org.example.rsp.services.GameService;
 
@@ -13,13 +13,13 @@ public class Run {
         System.out.println("-----------------------------------------------");
         System.out.println("--- Welcome to the Rock-Scissors-Paper game ---");
         System.out.println("-----------------------------------------------");
-        System.out.println("Please enter your name:");
+
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter your name: ");
         String userName = scanner.nextLine();
 
-        System.out.println(userName + ": please enter number of games:");
+        System.out.print(userName + ", please enter number of games: ");
         int gameCount = scanner.nextInt();
-        scanner.nextLine();
 
         Player player = new Player(userName);
         GameService gameService = new GameService();
@@ -27,28 +27,20 @@ public class Run {
 
         for (int i = 1; i <= gameCount; i++) {
             System.out.println("Game " + i + " from " + gameCount);
-
-            play(player, gameService, choiceService);
-
-            if (i < gameCount) {
-                System.out.println("Continue? [Y/N]");
-                String nextGame = scanner.nextLine();
-                if ("N".equalsIgnoreCase(nextGame)) {
-                    break;
-                }
+            try {
+                play(player, gameService, choiceService, scanner);
+            } catch (QuitGameException e) {
+                break;
             }
         }
-
         System.out.println("\n" + player.getPlayerResult());
     }
 
-    private static void play(Player player, GameService gs, ChoiceService chs) {
-        Choice playerChoice = chs.getRandomChoice();
+    private static void play(Player player, GameService gs, ChoiceService chs, Scanner scanner) {
+        Choice playerChoice = chs.getUserChoice(scanner);
         Choice computerChoice = chs.getRandomChoice();
         var gameResult = gs.takeResult(playerChoice, computerChoice);
-        System.out.println("Player: " + playerChoice + " vs Computer: " + computerChoice + " = " + gameResult);
+        System.out.println("You: " + playerChoice + " vs Computer: " + computerChoice + " = " + gameResult);
         player.addGameResult(gameResult);
     }
-
-
 }
