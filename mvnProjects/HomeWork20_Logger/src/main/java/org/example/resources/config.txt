@@ -1,4 +1,11 @@
-TYPE: stdout
-LEVEL: debug
-FILE: mvnProjects/HomeWork20_Logger/src/main/java/org/example/logs
+@-----------------------------------------------------------------
+@TYPE:      [STDOUT | FILE] default STDOUT
+@LEVEL:     [DEBUG | INFO | ALL | OFF] default ALL
+@FILE:      [path to log files]
+@MAX-SIZE:  [size in bytes] default 512
+@-----------------------------------------------------------------
+
+TYPE:   FILE
+LEVEL:  DEBUG
+FILE:   mvnProjects/HomeWork20_Logger/src/main/java/org/example/logs
 MAX-SIZE: 512

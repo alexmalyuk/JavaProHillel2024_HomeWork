@@ -19,6 +19,9 @@ public class ConfigurationLoader {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
+                if (line.startsWith("@")) {
+                    continue;
+                }
                 int separator = line.indexOf(":");
                 if (separator > 0) {
                     String key = line.substring(0, separator).toUpperCase().trim();
