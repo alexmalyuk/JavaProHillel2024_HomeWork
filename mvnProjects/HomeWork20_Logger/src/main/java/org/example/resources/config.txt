@@ -1,0 +1,4 @@
+TYPE: stdout
+LEVEL: debug
+FILE: mvnProjects/HomeWork20_Logger/src/main/java/org/example/logs
+MAX-SIZE: 512

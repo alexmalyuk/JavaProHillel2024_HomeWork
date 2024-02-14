@@ -1,31 +1,36 @@
 package org.example;
 
-import org.example.AbstractLogger.LoggerConfiguration;
-import org.example.dto.LoggerMessage;
-import org.example.AbstractLogger.LoggerService;
+import org.example.service.LoggerConfiguration;
+import org.example.service.LoggerMessage;
 import org.example.enums.LoggingLevel;
-
-import java.io.IOException;
+import org.example.service.ConfigurationLoader;
+import org.example.service.MessageWriter;
 
 public class Logger {
     private LoggerConfiguration configuration;
-    private LoggerService service;
+    private MessageWriter writer;
 
-    public Logger(LoggerConfiguration configuration) throws IOException {
-        this.configuration = configuration;
-        this.service = configuration.getService();
+    private Logger() {
     }
 
-    public void debug(String message) {
-        log(LoggingLevel.DEBUG, message);
+    private void write(LoggerMessage logMessage) {
+        if (logMessage.getLevel().getImportance() >= configuration.getLoggingLevel().getImportance()) {
+            writer.write(logMessage);
+        }
     }
 
-    public void info(String message) {
-        log(LoggingLevel.INFO, message);
+    public static Logger createLogger(String configurationFilePath) {
+        Logger logger = new Logger();
+        logger.configuration = ConfigurationLoader.load(configurationFilePath);
+        logger.writer = logger.configuration.createWriter();
+        return logger;
     }
 
-    private void log(LoggingLevel messageLevel, String message) {
-        if (messageLevel.getPriority() >= configuration.getLoggingLevel().getPriority())
-            service.log(new LoggerMessage(messageLevel, message));
+    public void debug(String str) {
+        write(LoggerMessage.create(LoggingLevel.DEBUG, str));
+    }
+
+    public void info(String str) {
+        write(LoggerMessage.create(LoggingLevel.INFO, str));
     }
 }
