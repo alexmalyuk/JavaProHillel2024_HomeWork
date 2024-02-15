@@ -41,3 +41,7 @@ JavaProHillel2024_HomeWork.iml
 /src/main/java/org/example/logs/*.*
 /mvnProjects/HomeWork20_Logger/src/main/java/org/example/logs/*.*
 /mvnProjects/HomeWork20_Logger/src/main/java/org/example/logs/
+/mvnProjects/HomeWork20_FindFileDublicate/target/*.*
+
+/mvnProjects/HomeWork20_FindFileDublicate/target/classes/org/example/Main.class
+/mvnProjects/HomeWork20_FindFileDublicate/target/classes/org/example/FileDuplicateFinder.class

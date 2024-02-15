@@ -1,0 +1,10 @@
+Find file dublicate
+
+1 - file name - <name, List<path>> -> filter list<path> > 1 -> <name, List<path>>
+2 - size - filtring by size (file1.size == file2.size) -> <name, List<path>>
+3 - CRC (file1.crc == file2.crc)
+
+File
+name
+path
+size
