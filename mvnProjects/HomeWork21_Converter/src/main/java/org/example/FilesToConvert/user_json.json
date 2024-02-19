@@ -1,0 +1,17 @@
+{
+  "user" : {
+    "id" : 1,
+    "username" : "john_doe",
+    "full_name" : "John Doe",
+    "email" : "john.doe@example.com",
+    "age" : 30,
+    "address" : {
+      "street" : "123 Main St",
+      "city" : "Anytown",
+      "country" : "USA"
+    },
+    "interests" : [ "Reading", "Traveling", "Cooking" ],
+    "active" : true,
+    "last_login" : 1645014600000
+  }
+}
