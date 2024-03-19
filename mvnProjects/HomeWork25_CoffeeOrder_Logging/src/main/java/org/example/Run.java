@@ -3,7 +3,6 @@ package org.example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class Run {
@@ -34,8 +33,9 @@ public class Run {
             }
             while (o.isPresent());
 
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
             logger.error("Program terminated on error", e);
+            return;
         }
 
         logger.info("Program end.");
