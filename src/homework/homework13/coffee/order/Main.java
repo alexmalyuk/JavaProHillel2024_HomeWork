@@ -1,6 +1,7 @@
 package homework.homework13.coffee.order;
 
 public class Main {
+
     public static void main(String[] args) {
 
         CoffeeOrderBoard orderBoard = new CoffeeOrderBoard();

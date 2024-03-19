@@ -84,3 +84,6 @@ JavaProHillel2024_HomeWork.iml
 /mvnProjects/HomeWork21_Converter/src/main/java/org/example/FilesToConvert/*.*
 
 /mvnProjects/HomeWork24_RestService/target/
+/mvnProjects/HomeWork25_CoffeeOrder_Logging/target/
+/logs/CoffeeOrder/logger.log
+/mvnProjects/HomeWork25_CoffeeOrder_Logging/logs/CoffeeOrder/logger.log
