@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+import static org.example.rsp.Run.rb;
+
 public class ChoiceService {
     public Choice getRandomChoice() {
         return Choice.values()[new Random().nextInt(Choice.values().length)];
@@ -14,7 +16,7 @@ public class ChoiceService {
 
     public Choice getUserChoice(Scanner scanner) {
         Map<String, Choice> choiceMap = Map.of("R", Choice.ROCK, "S", Choice.SCISSORS, "P", Choice.PAPER);
-        System.out.print("Your turn [R/S/P or Q-quit game]: ");
+        System.out.print(rb.getString("your.turn"));
         while (true) {
             String letterChoice = scanner.nextLine();
             if ("Q".equalsIgnoreCase(letterChoice))

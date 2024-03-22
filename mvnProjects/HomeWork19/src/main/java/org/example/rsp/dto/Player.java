@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static org.example.rsp.Run.rb;
+
 public class Player {
     private String name;
 
@@ -27,6 +29,6 @@ public class Player {
                 .map(Entry -> Entry.getKey() + " " + Entry.getValue())
                 .collect(Collectors.joining("\n"));
 
-        return "Player " + name + " score:\n" + scores;
+        return String.format(rb.getString("game.result"), name) + "\n" + scores;
     }
 }
