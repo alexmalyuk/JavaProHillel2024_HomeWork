@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-1.0.xml"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_tables" author="Malyuk">
+        <createTable tableName="homework">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(35)"/>
+            <column name="description" type="VARCHAR(200)"/>
+        </createTable>
+        <createTable tableName="lesson">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(35)"/>
+            <column name="updatedAt" type="DATETIME"/>
+            <column name="homework_id" type="INT"/>
+        </createTable>
+        <createTable tableName="schedule">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(35)"/>
+            <column name="updatedAt" type="DATETIME"/>
+        </createTable>
+        <createTable tableName="lessons_schedules">
+            <column name="lesson_id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="schedule_id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="addForeignKeyConstraints" author="Malyuk">
+        <addForeignKeyConstraint baseTableName="lesson"
+                                 baseColumnNames="homework_id"
+                                 constraintName="lesson_homework_id_fk"
+                                 referencedTableName="homework"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+        <addForeignKeyConstraint baseTableName="lessons_schedules"
+                                 baseColumnNames="lesson_id"
+                                 constraintName="lessons_schedules_lesson_id_fk"
+                                 referencedTableName="homework"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+        <addForeignKeyConstraint baseTableName="lessons_schedules"
+                                 baseColumnNames="schedule_id"
+                                 constraintName="lessons_schedules_schedule_id_fk"
+                                 referencedTableName="schedule"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+    </changeSet>
+
+</databaseChangeLog>

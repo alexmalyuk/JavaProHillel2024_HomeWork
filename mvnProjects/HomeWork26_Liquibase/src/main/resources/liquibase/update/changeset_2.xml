@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-1.0.xml"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="insertData_homework" author="Malyuk">
+        <insert tableName="homework">
+            <column name="name" value="HomeWork 20"/>
+            <column name="description" value="FindFileDublicate"/>
+        </insert>
+        <insert tableName="homework">
+            <column name="name" value="HomeWork 21"/>
+            <column name="description" value="Converter"/>
+        </insert>
+        <insert tableName="homework">
+            <column name="name" value="HomeWork 24"/>
+            <column name="description" value="RestService"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertData_lesson" author="Malyuk">
+        <insert tableName="lesson">
+            <column name="name" value="Lesson 20. Parsers"/>
+            <column name="updatedAt" value="2003-04-01 05:12:44"/>
+            <column name="homework_id" value="1"/>
+        </insert>
+        <insert tableName="lesson">
+            <column name="name" value="Lesson 21. Databases and SQL"/>
+            <column name="updatedAt" value="2007-06-07 20:35:12"/>
+            <column name="homework_id" value="2"/>
+        </insert>
+        <insert tableName="lesson">
+            <column name="name" value="Lesson 24. Network communication"/>
+            <column name="updatedAt" value="2004-06-22 20:39:30"/>
+            <column name="homework_id" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertData_schedule" author="Malyuk">
+        <insert tableName="schedule">
+            <column name="name" value="Nonday"/>
+            <column name="updatedAt" value="2017-06-08 11:54:01"/>
+        </insert>
+        <insert tableName="schedule">
+            <column name="name" value="Thursday"/>
+            <column name="updatedAt" value="2016-07-31 18:06:01"/>
+        </insert>
+        <insert tableName="schedule">
+            <column name="name" value="Saturday"/>
+            <column name="updatedAt" value="2020-11-19 20:46:25"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertData_lessons_schedules" author="Malyuk">
+        <insert tableName="lessons_schedules">
+            <column name="lesson_id" value="1"/>
+            <column name="schedule_id" value="1"/>
+        </insert>
+        <insert tableName="lessons_schedules">
+            <column name="lesson_id" value="2"/>
+            <column name="schedule_id" value="3"/>
+        </insert>
+        <insert tableName="lessons_schedules">
+            <column name="lesson_id" value="3"/>
+            <column name="schedule_id" value="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
