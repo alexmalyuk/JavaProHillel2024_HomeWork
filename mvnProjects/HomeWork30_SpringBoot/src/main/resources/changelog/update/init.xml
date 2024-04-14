@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-1.0.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="createTables" author="Malyuk">
+        <createTable tableName="orders">
+            <column name = "id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="date" type="DATETIME"/>
+            <column name="cost" type="DECIMAL(10, 2)"/>
+        </createTable>
+        <createTable tableName="products">
+            <column name = "id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="cost" type="DECIMAL(10, 2)"/>
+        </createTable>
+        <createTable tableName="orders_products">
+            <column name = "order_id" type="INT"/>
+            <column name = "product_id" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="addForeignKeyConstraints" author="Malyuk">
+        <addForeignKeyConstraint baseTableName="orders_products"
+                                 baseColumnNames="order_id"
+                                 constraintName="orders_products_order_id_fk"
+                                 referencedTableName="orders"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+        <addForeignKeyConstraint baseTableName="orders_products"
+                                 baseColumnNames="product_id"
+                                 constraintName="lorders_products_product_id_fk"
+                                 referencedTableName="products"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="initData" author="Malyuk">
+        <loadData tableName="products"
+                  file="changelog/update/products.csv"
+                  separator="," >
+            <column name="id" type="INT"/>
+            <column header="name" name="name" type="VARCHAR(255)"/>
+            <column header="cost" name="cost" type="DECIMAL(10, 2)"/>
+        </loadData>
+        <loadData tableName="orders"
+                  file="changelog/update/orders.csv"
+                  separator="," >
+            <column name="id" type="INT"/>
+            <column header="date" name="date" type="DATETIME"/>
+            <column header="cost" name="cost" type="DECIMAL(10, 2)"/>
+        </loadData>
+        <loadData tableName="orders_products"
+                  file="changelog/update/orders_products.csv"
+                  separator="," >
+            <column name="order_id" type="INT"/>
+            <column name="product_id" type="INT"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
