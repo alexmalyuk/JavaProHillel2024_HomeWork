@@ -10,7 +10,9 @@ import java.util.Optional;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findAll();
+
     Optional<Order> findById(Long id);
+
     Order save(Order entity);
 
     void delete(Order entity);

@@ -40,12 +40,9 @@ public class OrderService {
     public Order addOrder(List<ProductDto> products) {
         log.info(String.format("addOrder"));
         var list = products.stream()
-                .map(pDto -> {
-                    Product p = new Product()
-                            .setName(pDto.getName())
-                            .setCost(pDto.getCost());
-                    return p;
-                })
+                .map(pDto -> new Product()
+                        .setName(pDto.getName())
+                        .setCost(pDto.getCost()))
                 .toList();
 
         Order order = new Order()
@@ -56,7 +53,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public void deleteOrder(Long id){
+    public void deleteOrder(Long id) {
         log.info(String.format("deleteOrder"));
         orderRepository.delete(getOrderById(id));
     }
