@@ -2,12 +2,12 @@ package com.ordersApp.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.Accessors;
+
+import java.util.List;
 
 @Getter
 @Setter
-@Accessors(chain = true)
-public class ProductDto {
+public class OrderUpdateDto {
     private String name;
-    private Double cost;
+    private List<Long> productIds;
 }

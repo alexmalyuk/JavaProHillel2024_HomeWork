@@ -23,6 +23,8 @@ public class Order {
     @NonNull
     private LocalDateTime date;
     @NonNull
+    private String name;
+    @NonNull
     private Double cost;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "orders_products",

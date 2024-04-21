@@ -22,7 +22,14 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(value = {
             OrderNotFoundException.class})
     public ResponseEntity<?> handleOrderNotFoundException(Exception ex) {
-        String msg = String.format("Can not find order by id : %s", ex.getMessage());
+        String msg = String.format("Order with id : %s not found", ex.getMessage());
+        log.error(msg);
+        return new ResponseEntity(msg, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(value = {
+            ProductNotFoundException.class})
+    public ResponseEntity<?> handleProductNotFoundException(Exception ex) {
+        String msg = String.format("Product with id : %s not found", ex.getMessage());
         log.error(msg);
         return new ResponseEntity(msg, HttpStatus.NOT_FOUND);
     }

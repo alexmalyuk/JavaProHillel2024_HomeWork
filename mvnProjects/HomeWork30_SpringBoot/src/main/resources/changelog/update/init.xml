@@ -5,22 +5,22 @@
 
     <changeSet id="createTables" author="Malyuk">
         <createTable tableName="orders">
-            <column name = "id" type="INT" autoIncrement="true">
+            <column name="id" type="INT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="date" type="DATETIME"/>
             <column name="cost" type="DECIMAL(10, 2)"/>
         </createTable>
         <createTable tableName="products">
-            <column name = "id" type="INT" autoIncrement="true">
+            <column name="id" type="INT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="name" type="VARCHAR(255)"/>
             <column name="cost" type="DECIMAL(10, 2)"/>
         </createTable>
         <createTable tableName="orders_products">
-            <column name = "order_id" type="INT"/>
-            <column name = "product_id" type="INT"/>
+            <column name="order_id" type="INT"/>
+            <column name="product_id" type="INT"/>
         </createTable>
     </changeSet>
 
@@ -44,24 +44,30 @@
     <changeSet id="initData" author="Malyuk">
         <loadData tableName="products"
                   file="changelog/update/products.csv"
-                  separator="," >
+                  separator=",">
             <column name="id" type="INT"/>
             <column header="name" name="name" type="VARCHAR(255)"/>
             <column header="cost" name="cost" type="DECIMAL(10, 2)"/>
         </loadData>
         <loadData tableName="orders"
                   file="changelog/update/orders.csv"
-                  separator="," >
+                  separator=",">
             <column name="id" type="INT"/>
             <column header="date" name="date" type="DATETIME"/>
             <column header="cost" name="cost" type="DECIMAL(10, 2)"/>
         </loadData>
         <loadData tableName="orders_products"
                   file="changelog/update/orders_products.csv"
-                  separator="," >
+                  separator=",">
             <column name="order_id" type="INT"/>
             <column name="product_id" type="INT"/>
         </loadData>
+    </changeSet>
+
+    <changeSet id="add name field" author="Malyuk">
+        <addColumn tableName="orders">
+            <column name="name" type="VARCHAR(100)"/>
+        </addColumn>
     </changeSet>
 
 </databaseChangeLog>
